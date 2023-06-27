@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(./assets/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.container{
+  display: flex;
+}
+
+header {
+  padding: 55px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.container-left {
+  display: flex;
+  flex: 1.5;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.main-content {
+  padding: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.main-temp {
+  font-size: 6rem;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.city {
+  font-size: 3rem;
+}
+
+.container-right{
+  flex: 1;
+  height: 100vh;
+  backdrop-filter: blur(30px)
+}
+
+form{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  padding-bottom: 0;
+  height: auto;
+}
+
+#search{
+  padding-top: 30px;
+  line-height: 20px;
+  width: 80%;
+  text-align: center;
+  margin-right: 30px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+#search:focus{
+  outline: none;
+  color: white;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+#search:focus::placeholder{
+  color: transparent;
+}
+
+#searchBtn{
+  padding: 20px;
+  /* position: absolute;
+  top: 0;
+  right: 0; */
+  background-color: #F84202;
+  border: none;
+  margin-top: -30px;
+  margin-right: -30px;
+}
+
+#searchBtn i{
+  font-size: 3rem;
+}
