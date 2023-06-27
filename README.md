@@ -1,4 +1,4 @@
-# Weather Kun
+# weather-kun
 
 Weather Kun is a web application built with React in its initial development stage. It aims to provide weather information for a given location by utilizing the OpenWeatherMap API. The application is planned to have a Node.js backend in the future.
 
