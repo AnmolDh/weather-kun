@@ -74,6 +74,7 @@ form{
   background: transparent;
   border: none;
   border-bottom: 1px solid gray;
+  color: white;
 }
 
 #search:focus{
@@ -100,4 +101,34 @@ form{
 
 #searchBtn i{
   font-size: 3rem;
+}
+
+
+table{
+  width: 100%;
+  text-align: left;
+  padding: 30px;
+  padding-top: 40px;
+}
+
+
+th{
+  padding: 10px;
+}
+
+.tableHead{
+  padding-bottom: 25px;
+}
+
+.detailName, .detailValue{
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.detailName{
+  color: rgba(255, 255, 255, 0.562);
+}
+
+.detailValue{
+  text-align: right;
 }
