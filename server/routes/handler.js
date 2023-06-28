@@ -12,11 +12,10 @@ const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
 
 
 app.get("/", (req, res) => {
-  // const ipAddress = requestIp.getClientIp(req);
-  const ipAddress = "207.97.227.239";
+  const ipAddress = requestIp.getClientIp(req);
   const { city, country } = geoip.lookup(ipAddress);
   
-  const getData = apiEndpoint + encodeURIComponent(city) + "&appid=" + apiKey + "&units=" + units;
+  const getData = apiEndpoint + encodeURIComponent(city) + "&units=" + units + "&appid=" + apiKey;
 
   https.get(getData, (response) => {
     response.on("data", (data) => {
@@ -28,7 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   const query = req.body.searchCity;
-  const apiURL = apiEndpoint + query + "&appid=" + apiKey + "&units=" + units;
+  const apiURL = apiEndpoint + query + "&units=" + units + "&appid=" + apiKey;
   
   https.get(apiURL, (response) => {
     response.on("data", (data) => {
