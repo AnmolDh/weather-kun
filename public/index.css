@@ -16,7 +16,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.container{
+.container.main{
   display: flex;
 }
 
@@ -26,7 +26,7 @@ header {
   font-weight: bold;
 }
 
-.container-left {
+.container.left {
   display: flex;
   flex: 1.5;
   flex-direction: column;
@@ -50,7 +50,7 @@ header {
   font-size: 3rem;
 }
 
-.container-right{
+.container.right{
   flex: 1;
   height: 100vh;
   backdrop-filter: blur(30px)
