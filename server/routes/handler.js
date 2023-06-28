@@ -6,7 +6,7 @@ const geoip = require("geoip-lite");
 require("dotenv").config();
 const app = express();
 
-const apiKey = process.env.APIKEY;
+const apiKey = process.env.API_KEY;
 const units = process.env.UNITS;
 const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
 

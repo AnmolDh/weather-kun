@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routesHandler);
 
 
-app.listen(4000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("server started at port 4000");
 });
