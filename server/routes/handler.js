@@ -13,7 +13,10 @@ const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
 
 app.get("/", (req, res) => {
   const ipAddress = requestIp.getClientIp(req);
-  const { city, country } = geoip.lookup(ipAddress);
+  let { city } = geoip.lookup(ipAddress);
+  if (city === "") {
+    city = process.env.DEFAULT_CITY;
+  };
   
   const getData = apiEndpoint + encodeURIComponent(city) + "&units=" + units + "&appid=" + apiKey;
 
