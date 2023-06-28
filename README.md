@@ -1,54 +1,87 @@
 # weather-kun
 
-Weather Kun is a web application built with React in its initial development stage. It aims to provide weather information for a given location by utilizing the OpenWeatherMap API. The application is planned to have a Node.js backend in the future.
+Weather Kun is a web application in its initial development stage. It aims to provide real-time weather information for any location using React, Node.js, and the OpenWeatherMap API.
 
 ## Features (Planned)
 
-- Get real-time weather information for any location
-- Display temperature, humidity, wind speed, and weather conditions
+- Get real-time weather information based on IP geolocation
 - Search functionality to find weather data for specific locations
+- Display temperature, humidity, wind speed, and weather conditions
 
 ## Technologies Used
 
 - React
-- Node.js (future)
+- Node.js
+- Express
 - OpenWeatherMap API
 
 ## Installation
 
-1. Clone the repository:
+1. Fork the repository by clicking the "Fork" button on the GitHub repository page.
+
+2. Clone the forked repository to your local machine:
 
    ```bash
-   git clone https://github.com/AnmolDh/weather-kun.git
+   git clone https://github.com/YourUsername/weather-kun.git
    ```
 
-2. Navigate to the project directory:
+3. Create a `.env` file in the `server` directory with the following content:
+
+   ```env
+   API_KEY=your_openweathermap_api_key
+   UNITS=metric
+   DEFAULT_CITY=your_default_city
+   ```
+
+   Replace `your_openweathermap_api_key` with your OpenWeatherMap API key, `metric` with your preferred unit of measurement (e.g., `standard`, `metric`, `imperial`), and `your_default_city` with the default city for weather information.
+
+### Server
+
+1. Navigate to the server directory:
 
    ```bash
-   cd weather-kun
+   cd weather-kun/server
    ```
 
-3. Install the dependencies:
+2. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-4. Start the development server:
+3. Start the server:
+
+   ```bash
+   node index.js
+   ```
+
+   The server will start running on [http://localhost:4000](http://localhost:4000).
+
+### Client
+
+1. Navigate to the client directory:
+
+   ```bash
+   cd weather-kun/client
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
 
    ```bash
    npm start
    ```
 
-5. Open the application in your preferred web browser at [http://localhost:3000](http://localhost:3000).
+   The client application will open in your preferred web browser at [http://localhost:3000](http://localhost:3000).
 
 ## Usage
 
 - The application is currently in its early development stage, and key features are yet to be implemented. You can explore the code and contribute to its development.
-
-## Backend (Future)
-
-- The application is planned to have a Node.js backend in the future to handle data fetching from the OpenWeatherMap API and other server-side functionalities.
 
 ## Contributing
 
@@ -58,11 +91,14 @@ Contributions are welcome! If you have any ideas, suggestions, or bug reports, p
 
 The following features and enhancements are planned for future development:
 
-- Implement weather data fetching from the OpenWeatherMap API
-- Display weather information on the webpage using React components
-- Add search functionality to fetch weather data for specific locations
-- Enhance the user interface and overall design with CSS styling
-- Integrate Node.js as the backend to handle API requests and server-side logic
+- Implement IP geolocation to fetch weather data based on user's location
+- Enhance search functionality to allow users to manually enter a location
+- Display detailed weather information including temperature, humidity, wind speed, and weather conditions
+- Improve user interface and add CSS styling for an enhanced user experience
+
+## Star the Repository
+
+If you find this project interesting, please consider giving it a star. Your support is greatly appreciated and it helps boost my dopamine!
 
 ## License
 
