@@ -5,11 +5,10 @@ import Details from "./Details";
 
 
 function App() {
-  const backendURL = process.env.BACKEND_URL;
   const [weatherData, setWeatherData] = useState(null);
   
   useEffect(() => {
-    fetch(backendURL)
+    fetch("http://localhost:4000/")
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
@@ -29,7 +28,7 @@ function App() {
           </div>
           <div className="container right">
             <Search />
-            <Details />
+            <Details weatherData={weatherData} />
           </div>
         </div>
       )}

@@ -1,6 +1,17 @@
 import React from "react";
+import _ from "lodash";
 
-function Details() {
+function Details(props) {
+  const { main: details, wind, clouds } = props.weatherData;
+  
+  const detailArr = Object.keys(details).map((key) => {
+    return (
+      <tr key={key}>
+        <th className="detailName">{_.toUpper(_.replace(key, "_", " "))}</th>
+        <th className="detailValue">{details[key]}</th>
+      </tr>
+    );
+  });
   return (
     <table>
       <thead>
@@ -10,26 +21,9 @@ function Details() {
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th className="detailName">Feels Like</th>
-          <th className="detailValue">21°</th>
-        </tr>
-        <tr>
-          <th className="detailName">Wind</th>
-          <th className="detailValue">10km/hr</th>
-        </tr>
-        <tr>
-          <th className="detailName">Humidity</th>
-          <th className="detailValue">60%</th>
-        </tr>
-        <tr>
-          <th className="detailName">Cloudy</th>
-          <th className="detailValue">90%</th>
-        </tr>
-      </tbody>
+      <tbody>{detailArr}</tbody>
     </table>
   );
-};
+}
 
 export default Details;
