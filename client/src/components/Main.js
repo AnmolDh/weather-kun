@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Main() {
+function Main(props) {
+  const { weather: [currentWeather], main, winds, clouds, sys, name } = props.weatherData;
+  // const [currentTemp, setCurrentTemp] = useState(temp);
+
+  // function handleValues() {
+  //   setTemp(props.weatherData.main.temp)
+  // }
+
   return (
     <div className="main-content">
-      <h1 className="main-temp">22°</h1>
+      <h1 className="main-temp">{Math.round(main.temp)}°</h1>
       <div>
-        <h2 className="city">Chandigarh</h2>
-        <p className="date">06:00 - Tuesday, 28 June '23</p>
+        <h2 className="city">{name}</h2>
+        <p className="main-description">{currentWeather.main}</p>
       </div>
     </div>
   );
