@@ -12,11 +12,10 @@ const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
 
 
 app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const ipAddress = requestIp.getClientIp(req);
-  let { city } = geoip.lookup(ipAddress);
-  if (city === "") {
-    city = process.env.DEFAULT_CITY;
-  };
+  const geo = geoip.lookup(ipAddress);
+  let city = geo ? geo.city : process.env.DEFAULT_CITY;
   
   const getData = apiEndpoint + encodeURIComponent(city) + "&units=" + units + "&appid=" + apiKey;
 
