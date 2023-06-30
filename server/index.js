@@ -5,6 +5,7 @@ const routesHandler = require("./routes/handler");
 
 const app = Express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(routesHandler);
 
 const port = process.env.PORT || 4000;

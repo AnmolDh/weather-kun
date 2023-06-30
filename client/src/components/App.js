@@ -18,6 +18,10 @@ function App() {
       });
   }, []);
 
+  // function handleSearchResults() {
+    
+  // }
+
   return (
     <>
       {weatherData && (
