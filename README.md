@@ -2,6 +2,8 @@
 
 Weather Kun is a web application in its initial development stage. It aims to provide real-time weather information for any location using React, Node.js, and the OpenWeatherMap API.
 
+<img src="./client/public/assets/weather-kun.png" />
+
 ## Features (Planned)
 
 - Get real-time weather information based on IP geolocation
