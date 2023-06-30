@@ -18,9 +18,9 @@ function App() {
       });
   }, []);
 
-  // function handleSearchResults() {
-    
-  // }
+  function handleSearchResults(data) {
+    setWeatherData(data);
+  }
 
   return (
     <>
@@ -31,7 +31,7 @@ function App() {
             <Main weatherData={weatherData} />
           </div>
           <div className="container right">
-            <Search />
+            <Search handleSearchResults={handleSearchResults} />
             <Details weatherData={weatherData} />
             <Footer />
           </div>

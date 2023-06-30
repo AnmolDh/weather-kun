@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Search() {
+function Search(props) {
   const [searchInput, setSearchInput] = useState("");
 
   function handleSearchInput(event) {
@@ -18,7 +18,7 @@ function Search() {
       body: JSON.stringify({ searchQuery: searchInput }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => props.handleSearchResults(data))
       .catch((err) => console.log(err));
     setSearchInput("");
   }

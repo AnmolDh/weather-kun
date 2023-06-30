@@ -13,7 +13,9 @@ function Details(props) {
     pressure: "hPa",
     humidity: "%",
     wind: "m/s",
-    clouds: "%"
+    clouds: "%",
+    sea_level: "hPa",
+    grnd_level: "hPa"
   };
 
   const detailArr = Object.keys(details).map((key) => {
