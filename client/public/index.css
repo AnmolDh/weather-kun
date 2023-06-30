@@ -52,8 +52,9 @@ header {
 
 .container.right{
   flex: 1;
-  height: 100vh;
-  backdrop-filter: blur(30px)
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
 }
 
 form{
@@ -90,9 +91,6 @@ form{
 
 #searchBtn{
   padding: 20px;
-  /* position: absolute;
-  top: 0;
-  right: 0; */
   background-color: #F84202;
   border: none;
   margin-top: -30px;
@@ -125,10 +123,19 @@ th{
   font-weight: normal;
 }
 
-.detailName, .units{
+.detailName, .units, footer, footer a{
   color: rgba(255, 255, 255, 0.562);
+  text-decoration: none;
 }
 
 .detailValue{
   text-align: right;
+}
+
+footer{
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 10px;
 }

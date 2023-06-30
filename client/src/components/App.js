@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Main from "./Main";
 import Search from "./Search";
 import Details from "./Details";
-
+import Footer from "./Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
-  
+
   useEffect(() => {
     fetch("http://localhost:4000/")
       .then((response) => response.json())
@@ -29,6 +29,7 @@ function App() {
           <div className="container right">
             <Search />
             <Details weatherData={weatherData} />
+            <Footer />
           </div>
         </div>
       )}
