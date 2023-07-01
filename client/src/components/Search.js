@@ -10,7 +10,7 @@ function Search(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("http://localhost:4000/", {
+    fetch(process.env.REACT_APP_BACKEND_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
