@@ -7,13 +7,12 @@
 }
 
 body {
-
   height: 100vh;
   color: white;
   font-family: "Inter", sans-serif;
 }
 
-.container.main{
+.container.main {
   display: flex;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -50,14 +49,14 @@ header {
   font-size: 3rem;
 }
 
-.container.right{
+.container.right {
   flex: 1;
   backdrop-filter: blur(30px);
   display: flex;
   flex-direction: column;
 }
 
-form{
+form {
   display: flex;
   justify-content: space-between;
   margin: 30px;
@@ -65,7 +64,7 @@ form{
   height: auto;
 }
 
-#search{
+#search {
   padding-top: 30px;
   line-height: 20px;
   width: 80%;
@@ -78,64 +77,118 @@ form{
   color: white;
 }
 
-#search:focus{
+#search:focus {
   outline: none;
   color: white;
   padding-top: 20px;
   font-size: 30px;
 }
 
-#search:focus::placeholder{
+#search:focus::placeholder {
   color: transparent;
 }
 
-#searchBtn{
+#searchBtn {
   padding: 20px;
-  background-color: #F84202;
+  background-color: #f84202;
   border: none;
   margin-top: -30px;
   margin-right: -30px;
 }
 
-#searchBtn i{
+#searchBtn i {
   font-size: 3rem;
 }
 
-
-table{
+table {
   width: 100%;
   text-align: left;
   padding: 30px;
   padding-top: 40px;
 }
 
-
-th{
+th {
   padding: 10px;
 }
 
-.tableHead{
+.tableHead {
   padding-bottom: 25px;
+  font-weight: bold;
 }
 
-.detailName, .detailValue{
+.detailName,
+.detailValue {
   font-size: 0.9rem;
   font-weight: normal;
+  font-weight: bold;
 }
 
-.detailName, .units, footer, footer a{
-  color: rgba(255, 255, 255, 0.562);
+.detailName,
+.units,
+footer,
+footer a {
+  color: rgba(255, 255, 255, 0.692);
   text-decoration: none;
 }
 
-.detailValue{
+.detailValue {
   text-align: right;
 }
 
-footer{
+footer {
   flex: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  body {
+    height: auto;
+  }
+
+  .container.main {
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .main-temp{
+    padding: 0;
+    position: relative;
+    left: 10px;
+  }
+
+  .container.right{
+        backdrop-filter: blur(0px);
+  }
+
+  form{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #searchBtn {
+    padding: 20px;
+    margin: 10px;
+    background-color: transparent;
+    border: none;
+    text-align: end;
+  }
+
+  #search{
+    border-bottom: 1px solid white;
+    margin: auto;
+  }
+
+  #searchBtn i {
+    font-size: 2rem;
+    color: white;
+  }
 }
