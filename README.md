@@ -37,6 +37,14 @@ Weather Kun is a web application in its initial development stage. It aims to pr
 
    Replace `your_openweathermap_api_key` with your OpenWeatherMap API key, `metric` with your preferred unit of measurement (e.g., `standard`, `metric`, `imperial`), and `your_default_city` with the default city for weather information.
 
+4. Create a `.env` file in the `client` directory with the following content:
+
+   ```env
+   REACT_APP_BACKEND_URL=http://localhost:4000
+   ```
+
+   Replace `http://localhost:4000` with the URL of your server.
+
 ### Server
 
 1. Navigate to the server directory:
@@ -93,10 +101,10 @@ Contributions are welcome! If you have any ideas, suggestions, or bug reports, p
 
 The following features and enhancements are planned for future development:
 
-- Implement IP geolocation to fetch weather data based on user's location
+- Implement IP geolocation to fetch weather data based on the user's location
 - Enhance search functionality to allow users to manually enter a location
 - Display detailed weather information including temperature, humidity, wind speed, and weather conditions
-- Improve user interface and add CSS styling for an enhanced user experience
+- Improve the user interface and add CSS styling for an enhanced user experience
 
 ## Star the Repository
 
