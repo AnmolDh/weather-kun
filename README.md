@@ -54,7 +54,7 @@ Weather Kun is a web application in its initial development stage. It aims to pr
 3. Start the server:
 
    ```bash
-   node index.js
+   npm start
    ```
 
    The server will start running on [http://localhost:4000](http://localhost:4000).
