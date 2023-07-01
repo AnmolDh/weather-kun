@@ -8,7 +8,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/")
+    fetch(process.env.REACT_APP_BACKEND_URL)
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
