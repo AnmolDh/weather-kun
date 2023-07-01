@@ -7,10 +7,7 @@
 }
 
 body {
-  background: url(./assets/bg.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+
   height: 100vh;
   color: white;
   font-family: "Inter", sans-serif;
@@ -18,6 +15,9 @@ body {
 
 .container.main{
   display: flex;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 header {

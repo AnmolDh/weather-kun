@@ -25,7 +25,12 @@ function App() {
   return (
     <>
       {weatherData && (
-        <div className="container main">
+        <div
+          className="container main"
+          style={{
+            background: `url('./assets/img/${weatherData.weather[0].icon}.jpg')`,
+          }}
+        >
           <div className="container left">
             <header>weather-kun</header>
             <Main weatherData={weatherData} />
