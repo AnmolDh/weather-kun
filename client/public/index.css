@@ -143,6 +143,20 @@ footer {
   margin-bottom: 10px;
 }
 
+.loader{
+  background: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader p {
+  margin: 10px;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   body {
     height: auto;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import RingLoader from "react-spinners/RingLoader";
 import Main from "./Main";
 import Search from "./Search";
 import Details from "./Details";
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <>
-      {weatherData && (
+      {weatherData ? (
         <div
           className="container main"
           style={{
@@ -41,9 +42,14 @@ function App() {
             <Footer />
           </div>
         </div>
+      ) : (
+        <div className="loader">
+            <RingLoader color={"white"} size={150}></RingLoader>
+            <p>spinning up the server...</p>
+        </div>
       )}
     </>
   );
-}
+};
 
 export default App;
