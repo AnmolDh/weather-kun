@@ -2,7 +2,11 @@ import React from "react";
 import _ from "lodash";
 
 function Details(props) {
-  let { main: details, wind: {speed: wind}, clouds: {all: clouds} } = props.weatherData;
+  let {
+    main: details,
+    wind: { speed: wind },
+    clouds: { all: clouds },
+  } = props.weatherData;
   details = { ...details, wind, clouds };
 
   const units = {
@@ -15,18 +19,20 @@ function Details(props) {
     wind: "m/s",
     clouds: "%",
     sea_level: "hPa",
-    grnd_level: "hPa"
+    grnd_level: "hPa",
   };
 
   const detailArr = Object.keys(details).map((key) => {
     return (
       <tr key={key}>
         <th className="detailName">{_.toUpper(_.replace(key, "_", " "))}</th>
-        <th className="detailValue">{details[key]} <span className="units">{units[key] || ""}</span></th>
+        <th className="detailValue">
+          {details[key]} <span className="units">{units[key] || ""}</span>
+        </th>
       </tr>
     );
   });
-  
+
   return (
     <table>
       <thead>

@@ -2,7 +2,6 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const routesHandler = require("./routes/handler");
 
-
 const app = Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
