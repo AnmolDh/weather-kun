@@ -7,7 +7,6 @@ import Details from "./Details";
 import Footer from "./Footer";
 
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
-console.log("Sending pageview for " + window.location.pathname);
 ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
 function App() {
