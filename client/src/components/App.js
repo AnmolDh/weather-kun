@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import RingLoader from "react-spinners/RingLoader";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Main from "./Main";
 import Search from "./Search";
 import Details from "./Details";
 import Footer from "./Footer";
 
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
-ReactGA.pageview("/");
+ReactGA.send({ hitType: "pageview", page: "/" });
 
 function App() {
+  console.log(process.env.REACT_APP_GA_ID);
   const [weatherData, setWeatherData] = useState(null);
   const [notFound, setNotFound] = useState(false);
 
