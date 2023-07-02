@@ -73,8 +73,7 @@ form {
   font-size: 20px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid gray;
-  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.555);
 }
 
 #search:focus {
@@ -82,6 +81,10 @@ form {
   color: white;
   padding-top: 20px;
   font-size: 30px;
+}
+
+#search::placeholder {
+  color: rgba(255, 255, 255, 0.555);
 }
 
 #search:focus::placeholder {
@@ -143,7 +146,7 @@ footer {
   margin-bottom: 10px;
 }
 
-.loader{
+.loader {
   background: black;
   height: 100vh;
   display: flex;
@@ -169,20 +172,19 @@ footer {
   .main-content {
     flex-direction: column;
     text-align: center;
-
   }
 
-  .main-temp{
+  .main-temp {
     padding: 0;
     position: relative;
     left: 10px;
   }
 
-  .container.right{
-        backdrop-filter: blur(0px);
+  .container.right {
+    backdrop-filter: blur(0px);
   }
 
-  form{
+  form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -196,7 +198,7 @@ footer {
     text-align: end;
   }
 
-  #search{
+  #search {
     border-bottom: 1px solid white;
     margin: auto;
   }
