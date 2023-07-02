@@ -7,10 +7,10 @@ import Details from "./Details";
 import Footer from "./Footer";
 
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
-ReactGA.send({ hitType: "pageview", page: "/" });
+console.log("Sending pageview for " + window.location.pathname);
+ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
 function App() {
-  console.log(process.env.REACT_APP_GA_ID);
   const [weatherData, setWeatherData] = useState(null);
   const [notFound, setNotFound] = useState(false);
 
