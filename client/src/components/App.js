@@ -7,6 +7,7 @@ import Footer from "./Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     fetch(process.env.REACT_APP_BACKEND_URL)
@@ -20,12 +21,12 @@ function App() {
   }, []);
 
   function handleSearchResults(data) {
-    setWeatherData(data);
+    data.cod === "404" ? setNotFound(true) : setWeatherData(data);
   }
 
   return (
     <>
-      {weatherData ? (
+      {weatherData && !notFound ? (
         <div
           className="container main"
           style={{
@@ -44,12 +45,18 @@ function App() {
         </div>
       ) : (
         <div className="loader">
-            <RingLoader color={"white"} size={150}></RingLoader>
+          <RingLoader color={"white"} size={150}></RingLoader>
+          {notFound ? (
+            <p>
+              404 - location not found... infinite loop... please refresh...
+            </p>
+          ) : (
             <p>spinning up the server...</p>
+          )}
         </div>
       )}
     </>
   );
-};
+}
 
 export default App;
