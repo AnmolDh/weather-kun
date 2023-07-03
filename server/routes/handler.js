@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   const query = req.body.searchQuery;
-  const apiURL = apiEndpoint + encodeURIComponent(query);
+  const apiURL = apiEndpoint + encodeURIComponent(query.trim());
 
   https.get(apiURL, (response) => {
     response.on("data", (data) => {
