@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 
 function Main(props) {
+  // Destructure the weatherData object
   const {
     weather: [currentWeather],
     main: { temp },

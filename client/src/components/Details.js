@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 
 function Details(props) {
+  // Destructure the weatherData object
   let {
     main: details,
     wind: { speed: wind },
@@ -9,6 +10,7 @@ function Details(props) {
   } = props.weatherData;
   details = { ...details, wind, clouds };
 
+  // Define units for each weather detail
   const units = {
     temp: "°C",
     feels_like: "°C",
@@ -22,6 +24,7 @@ function Details(props) {
     grnd_level: "hPa",
   };
 
+  // Map over the "details" object and create a table row for each detail
   const detailArr = Object.keys(details).map((key) => {
     return (
       <tr key={key}>
