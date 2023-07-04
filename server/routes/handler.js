@@ -16,14 +16,24 @@ const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${uni
 app.get("/", (req, res) => {
   const ipAddress = requestIp.getClientIp(req);
   const geo = geoip.lookup(ipAddress);
-  let city = geo ? geo.city : process.env.DEFAULT_CITY;
-
+  const city = geo ? geo.city : process.env.DEFAULT_CITY;
+  const fallbackCity = process.env.DEFAULT_CITY;
   const apiURL = apiEndpoint + encodeURIComponent(city);
+  const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
 
   https.get(apiURL, (response) => {
     response.on("data", (data) => {
       const weatherData = JSON.parse(data);
-      res.send(weatherData);
+      if (weatherData.cod === "404") {
+        https.get(fallbackApiURL, (response) => {
+          response.on("data", (data) => {
+            const weatherData = JSON.parse(data);
+            res.send(weatherData);
+          });
+        });
+      } else {
+        res.send(weatherData);
+      }
     });
   });
 });
