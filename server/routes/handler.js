@@ -12,10 +12,6 @@ const apiKey = process.env.API_KEY;
 const units = process.env.UNITS;
 const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${units}&appid=${apiKey}&q=`;
 
-// fallback API URL if Location is not found in OpenWeatherMap API
-const fallbackCity = process.env.DEFAULT_CITY;
-const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
-
 // Handle GET requests to the root URL
 app.get("/", (req, res) => {
   // Get the client's IP address and use it to determine their geo-location
@@ -25,6 +21,10 @@ app.get("/", (req, res) => {
   // construct the API URL for the Geo-Location
   const city = geo ? geo.city : process.env.DEFAULT_CITY;
   const apiURL = apiEndpoint + encodeURIComponent(city);
+
+  // fallback API URL if IP Geo-Location is not found in OpenWeatherMap API
+  const fallbackCity = process.env.DEFAULT_CITY;
+  const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
 
   // Make a request to the OpenWeatherMap API
   https.get(apiURL, (response) => {
