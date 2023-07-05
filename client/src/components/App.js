@@ -10,7 +10,6 @@ ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
-  const [notFound, setNotFound] = useState(false);
 
   // Fetch weather data from the Backend API on component Mount
   useEffect(() => {
@@ -26,14 +25,13 @@ function App() {
 
   // Handle search results from the POST request to Backend API
   function handleSearchResults(data) {
-    // If the API returns a 404 error, set the "notFound" to true
-    data.cod === "404" ? setNotFound(true) : setWeatherData(data);
+    setWeatherData(data);
   }
 
   return (
     <>
-      {weatherData && !notFound ? (
-        // If weatherData is not null and notFound is false , render this
+      {weatherData ? (
+        // If weatherData is not null, render this
         <div
           className="container main"
           style={{
@@ -47,8 +45,8 @@ function App() {
           />
         </div>
       ) : (
-        // If weatherData is null or notFound is true, render this
-        <Loader notFound={notFound} />
+        // If weatherData is null, render this
+        <Loader />
       )}
     </>
   );

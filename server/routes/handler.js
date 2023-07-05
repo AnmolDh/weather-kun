@@ -12,6 +12,10 @@ const apiKey = process.env.API_KEY;
 const units = process.env.UNITS;
 const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${units}&appid=${apiKey}&q=`;
 
+// fallback API URL if Location is not found in OpenWeatherMap API
+const fallbackCity = process.env.DEFAULT_CITY;
+const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
+
 // Handle GET requests to the root URL
 app.get("/", (req, res) => {
   // Get the client's IP address and use it to determine their geo-location
@@ -21,10 +25,6 @@ app.get("/", (req, res) => {
   // construct the API URL for the Geo-Location
   const city = geo ? geo.city : process.env.DEFAULT_CITY;
   const apiURL = apiEndpoint + encodeURIComponent(city);
-
-  // fallback API URL if IP Geo-Location is not found in OpenWeatherMap API
-  const fallbackCity = process.env.DEFAULT_CITY;
-  const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
 
   // Make a request to the OpenWeatherMap API
   https.get(apiURL, (response) => {
@@ -47,7 +47,6 @@ app.get("/", (req, res) => {
   });
 });
 
-
 // Handle POST requests to the root URL
 app.post("/", (req, res) => {
   // Get the search query from the request body and construct the API URL
@@ -58,8 +57,20 @@ app.post("/", (req, res) => {
   https.get(apiURL, (response) => {
     response.on("data", (data) => {
       const weatherData = JSON.parse(data);
-      // Send recieved JSON data to client, without checking for Error Code
-      res.send(weatherData);
+      // If the OpenWeatherMap API returns a 404 error, send a custom error response
+      if (weatherData.cod === "404") {
+        const notFound = {
+          name: "City Not Found",
+          weather: "N/a",
+          main: "N/a",
+          wind: "N/a",
+          clouds: "N/a",
+        };
+        res.send(notFound);
+      } else {
+        // Otherwise, send the weather data as the response
+        res.send(weatherData);
+      }
     });
   });
 });
