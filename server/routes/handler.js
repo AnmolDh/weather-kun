@@ -15,7 +15,8 @@ const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${uni
 // Handle GET requests to the root URL
 app.get("/", (req, res) => {
   // Get the client's IP address and use it to determine their geo-location
-  const ipAddress = requestIp.getClientIp(req);
+  // const ipAddress = requestIp.getClientIp(req);
+  const ipAddress = "14.99.57.3";
   const geo = geoip.lookup(ipAddress);
 
   // construct the API URL for the Geo-Location
@@ -32,7 +33,7 @@ app.get("/", (req, res) => {
       const weatherData = JSON.parse(data);
 
       // If the OpenWeatherMap API return 404 error, try again with fallback URL
-      if (weatherData.cod === "404") {
+      if (weatherData.cod === "404" || weatherData.cod === "400") {
         https.get(fallbackApiURL, (response) => {
           response.on("data", (data) => {
             const weatherData = JSON.parse(data);
