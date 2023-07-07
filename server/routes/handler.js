@@ -15,8 +15,7 @@ const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${uni
 // Handle GET requests to the root URL
 app.get("/", (req, res) => {
   // Get the client's IP address and use it to determine their geo-location
-  // const ipAddress = requestIp.getClientIp(req);
-  const ipAddress = "14.99.57.3";
+  const ipAddress = requestIp.getClientIp(req);
   const geo = geoip.lookup(ipAddress);
 
   // construct the API URL for the Geo-Location
