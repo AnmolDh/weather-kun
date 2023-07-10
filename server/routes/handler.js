@@ -2,11 +2,13 @@ const express = require("express");
 const https = require("https");
 const requestIp = require("request-ip");
 const cors = require("cors");
+const { IPinfoWrapper } = require("node-ipinfo");
 
 require("dotenv").config();
 const app = express();
 app.use(cors());
 
+const ipinfo = new IPinfoWrapper(process.env.IPINFO_TOKEN);
 const apiKey = process.env.API_KEY;
 const units = process.env.UNITS;
 const apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?units=${units}&appid=${apiKey}&q=`;
@@ -16,43 +18,36 @@ app.get("/", (req, res) => {
   // Get the client's IP address and use it to determine their geo-location
   const ipAddress = requestIp.getClientIp(req);
 
-  // Make a request to the ipinfo.io API to get the client's geo-location
-  https.get(
-    `https://ipinfo.io/${ipAddress}?token=${process.env.IPINFO_TOKEN}`,
-    (response) => {
+  // Use the ipinfo module to get the client's geo-location based on their IP address
+  ipinfo.lookupIp(ipAddress).then((geoData) => {
+    // construct the API URL for the Geo-Location
+    const city = geoData ? geoData.city : process.env.DEFAULT_CITY;
+    const apiURL = apiEndpoint + encodeURIComponent(city);
+
+    // fallback API URL if IP Geo-Location is not found in OpenWeatherMap API
+    const fallbackCity = process.env.DEFAULT_CITY;
+    const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
+
+    // Make a request to the OpenWeatherMap API
+    https.get(apiURL, (response) => {
       response.on("data", (data) => {
-        const geoData = JSON.parse(data);
-        
-        // construct the API URL for the Geo-Location
-        const city = geoData ? geoData.city : process.env.DEFAULT_CITY;
-        const apiURL = apiEndpoint + encodeURIComponent(city);
+        const weatherData = JSON.parse(data);
 
-        // fallback API URL if IP Geo-Location is not found in OpenWeatherMap API
-        const fallbackCity = process.env.DEFAULT_CITY;
-        const fallbackApiURL = apiEndpoint + encodeURIComponent(fallbackCity);
-
-        // Make a request to the OpenWeatherMap API
-        https.get(apiURL, (response) => {
-          response.on("data", (data) => {
-            const weatherData = JSON.parse(data);
-
-            // If the OpenWeatherMap API return 404 error, try again with fallback URL
-            if (weatherData.cod === "404" || weatherData.cod === "400") {
-              https.get(fallbackApiURL, (response) => {
-                response.on("data", (data) => {
-                  const weatherData = JSON.parse(data);
-                  res.send(weatherData);
-                });
-              });
-            } else {
-              // If the OpenWeatherMap API returns valid JSON data, send it to the client
+        // If the OpenWeatherMap API return 404 error, try again with fallback URL
+        if (weatherData.cod === "404" || weatherData.cod === "400") {
+          https.get(fallbackApiURL, (response) => {
+            response.on("data", (data) => {
+              const weatherData = JSON.parse(data);
               res.send(weatherData);
-            }
+            });
           });
-        });
+        } else {
+          // If the OpenWeatherMap API returns valid JSON data, send it to the client
+          res.send(weatherData);
+        }
       });
-    }
-  );
+    });
+  });
 });
 
 // Handle POST requests to the root URL
