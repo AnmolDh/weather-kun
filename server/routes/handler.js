@@ -6,7 +6,7 @@ const { IPinfoWrapper } = require("node-ipinfo");
 
 require("dotenv").config();
 const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.CLIENT_URL }));
 
 const ipinfo = new IPinfoWrapper(process.env.IPINFO_TOKEN);
 const apiKey = process.env.API_KEY;

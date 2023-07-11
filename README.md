@@ -33,6 +33,7 @@ Weather Kun is a web application that provides real-time weather information for
    API_KEY=your_openweathermap_api_key
    UNITS=metric
    DEFAULT_CITY=your_default_city
+   CLIENT_URL=http://localhost:3000
    ```
 
    Replace `your_openweathermap_api_key` with your OpenWeatherMap API key, `metric` with your preferred unit of measurement (e.g., `standard`, `metric`, `imperial`), and `your_default_city` with the default city for weather information.
@@ -40,7 +41,8 @@ Weather Kun is a web application that provides real-time weather information for
 4. Create a `.env` file in the `client` directory with the following content:
 
    ```env
-   REACT_APP_BACKEND_URL=http://localhost:4000
+   REACT_APP_SERVER_URL=http://localhost:4000
+   REACT_APP_GA_ID=your_google_analytics_id (optional)
    ```
 
    Replace `http://localhost:4000` with the URL of your server.

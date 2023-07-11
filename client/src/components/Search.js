@@ -14,7 +14,7 @@ function Search(props) {
     event.preventDefault();
 
     // Send a POST request to the Backend API with the search query
-    fetch(process.env.REACT_APP_BACKEND_URL, {
+    fetch(process.env.REACT_APP_SERVER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ function App() {
 
   // Fetch weather data from the Backend API on component Mount
   useEffect(() => {
-    fetch(process.env.REACT_APP_BACKEND_URL)
+    fetch(process.env.REACT_APP_SERVER_URL)
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
