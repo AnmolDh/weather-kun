@@ -42,7 +42,6 @@ Weather Kun is a web application that provides real-time weather information for
 
    ```env
    REACT_APP_SERVER_URL=http://localhost:4000
-   REACT_APP_GA_ID=your_google_analytics_id (optional)
    ```
 
    Replace `http://localhost:4000` with the URL of your server.

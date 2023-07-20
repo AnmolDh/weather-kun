@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactGA from "react-ga4";
 import LeftContainer from "./LeftContainer";
 import RightContainer from "./RightContainer";
 import Loader from "./Loader";
-
-// Initialize Google Analytics, and send a pageview hit to them
-ReactGA.initialize(process.env.REACT_APP_GA_ID);
-ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
